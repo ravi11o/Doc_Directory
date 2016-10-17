@@ -3,21 +3,15 @@ extends layout
 block content
     h2 Browse Doctors
     ul.docs
-        li
-            h3 Suraj kumar
-            p Speciality: Cardiologist
-            p Location: rakkar
-            p
-                a(href="doctors/details/1") &gt; Details
-        li
-            h3 Ankit kumar
-            p Speciality: General
-            p Location: dharmshala
-            p
-                a(href="doctors/details/2") &gt; Details
-        li
-            h3 Sachin kumar
-            p Speciality: ENT
-            p Location: rakkar
-            p
-                a(href="doctors/details/3") &gt; Details
+        if doctors 
+            each doctor, i in doctors
+                li
+                    h3 #{doctor.fullname}
+                    p Speciality: #{doctor.category}
+                    p Location: #{doctor.local_address} #{doctor.city} #{doctor.state} (#{doctor.pin})
+                    p
+                        a(href="/doctors/details/#{doctor.doc_id}") &gt; Details
+        else
+             Sorry No Doctors Listed.
+            
+        

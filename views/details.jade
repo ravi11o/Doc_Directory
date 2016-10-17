@@ -1,20 +1,20 @@
 extends layout
 
 block content
-    h2 Dr.Suraj Kumar
+    h2 #{doctor.fullname}
     div
         h4 Physician Information
         ul.doc-info
-            li FullName: Suraj Kumar
-            li Accepting new Patients: Yes
-            li Speciality/Category: cardiologist
-            li Clinic-Name: Student Clinic
+            li FullName: #{doctor.fullname}
+            li Accepting new Patients: #{doctor.new_patients}
+            li Speciality/Category: #{doctor.category}
+            li Experience: #{doctor.experience} Yrs
+            li Clinic-Name: #{doctor.clinic_name}
     div  
         h4 Practice Information
         ul.practice-info
-            li Clinic Name: Student Clinic
-            li Address: Rakkar Dharmshala Himachal Pradesh(456543)
-            li Medicare Accepted: Yes
+            li Clinic Name: #{doctor.clinic_name}
+            li Address: #{doctor.local_address} #{doctor.city} #{doctor.state}(#{doctor.pin})
     br
     br
     a(href="/doctors") &lt; Go Back

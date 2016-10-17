@@ -1,11 +1,7 @@
 h2 Categories 
 ul
-    li
-        a(href='#') General 
-    li
-        a(href='#') Neurologist
-    li
-        a(href='#') Cardiologist
-    li
-        a(href='#') ENT 
+    each category, i in cats
+        li
+            a(href='/doctors/category/#{category.name}') #{category.name} 
+    
        
