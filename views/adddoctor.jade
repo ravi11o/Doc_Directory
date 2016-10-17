@@ -1,0 +1,77 @@
+extends layout
+
+block content
+    h2 Add Doctor
+    form.addForm(method="post", action="/doctors/add")
+        h3 Doctors Info
+        div.form-control
+            label Full_Name:
+            input(type="text", name="fullname")
+        div.form-control
+            label Category:
+            select(name="category")
+                option(value="general") General
+                option(value="ENT") ENT Specialist
+        div.form-control
+            label Accepting new Patients:
+            select(name="new_patients")
+                option(value="true") Yes
+                option(value="false") No
+        div.form-control
+            label Experience:
+            input(type="text", name="experience")
+        h3 Practice Info
+        div.form-control
+            label Clinic Name:
+            input(type="text", name="clinic_name")
+        div.form-control
+            label Local Address:
+            input(type="text", name="local_address")
+        div.form-control
+            label City:
+            input(type="text", name="city")
+        div.form-control
+            label State:
+            select(name="state")
+                option(value='') ------------Select State-----------
+                
+                  option(value='Andaman and Nicobar Islands') Andaman and Nicobar Islands
+                  option(value='Andhra Pradesh') Andhra Pradesh
+                  option(value='Arunachal Pradesh') Arunachal Pradesh
+                  option(value='Assam') Assam
+                  option(value='Bihar') Bihar
+                  option(value='Chandigarh') Chandigarh
+                  option(value='Chhattisgarh') Chhattisgarh
+                  option(value='Dadra and Nagar Haveli') Dadra and Nagar Haveli
+                  option(value='Daman and Diu') Daman and Diu
+                  option(value='Delhi') Delhi
+                  option(value='Goa') Goa
+                  option(value='Gujarat') Gujarat
+                  option(value='Haryana') Haryana
+                  option(value='Himachal Pradesh') Himachal Pradesh
+                  option(value='Jammu and Kashmir') Jammu and Kashmir
+                  option(value='Jharkhand') Jharkhand
+                  option(value='Karnataka') Karnataka
+                  option(value='Kerala') Kerala
+                  option(value='Lakshadweep') Lakshadweep
+                  option(value='Madhya Pradesh') Madhya Pradesh
+                  option(value='Maharashtra') Maharashtra
+                  option(value='Manipur') Manipur
+                  option(value='Meghalaya') Meghalaya
+                  option(value='Mizoram') Mizoram
+                  option(value='Nagaland') Nagaland
+                  option(value='Orissa') Orissa
+                  option(value='Pondicherry') Pondicherry
+                  option(value='Punjab') Punjab
+                  option(value='Rajasthan') Rajasthan
+                  option(value='Sikkim') Sikkim
+                  option(value='Tamil Nadu') Tamil Nadu
+                  option(value='Tripura') Tripura
+                  option(value='Uttaranchal') Uttaranchal
+                  option(value='Uttar Pradesh') Uttar Pradesh
+                  option(value='West Bengal') West Bengal
+        div.form-control
+            label Pin:
+            input(type="text", name="pin")
+        div
+            button(type="submit") Add Doctor
