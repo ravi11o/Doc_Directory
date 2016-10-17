@@ -3,7 +3,7 @@ extends layout
 block content
     h2 Browse Doctors
     ul.docs
-        if doctors 
+        if doctors != false
             each doctor, i in doctors
                 li
                     h3 #{doctor.fullname}
@@ -12,6 +12,6 @@ block content
                     p
                         a(href="/doctors/details/#{doctor.doc_id}") &gt; Details
         else
-             Sorry No Doctors Listed.
+        | Sorry.. No Doctors Listed.
             
         

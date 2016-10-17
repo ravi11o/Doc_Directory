@@ -9,16 +9,30 @@ client.connect(function(err, result) {
 
 /* GET Doctors listing. */
 router.get('/', function(req, res) {
-  var query = "SELECT * FROM findadoc.doctors";
-  client.execute(query, [], function(err, results) {
-    if(err) {
-      res.status(404).send({msg: err});
+    if(req.query.state) {
+        var query = "SELECT * FROM findadoc.doctors WHERE state = ?";
+        client.execute(query, [req.query.state], function(err, results) {
+            if(err) {
+                res.status(404).send({msg: err});
+            } else {
+                res.render('doctors', {
+                  doctors: results.rows
+                });
+            }
+        });
     } else {
-      res.render('doctors', {
-        doctors: results.rows
-      });
+        var query = "SELECT * FROM findadoc.doctors";
+        client.execute(query, [], function(err, results) {
+             if(err) {
+                res.status(404).send({msg: err});
+            } else {
+                res.render('doctors', {
+                doctors: results.rows
+                   });
+            }
+        });
     }
-  });
+  
 });
 
 //Add Doctors
