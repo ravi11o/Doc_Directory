@@ -10,8 +10,8 @@ block content
         div.form-control
             label Category:
             select(name="category")
-                option(value="general") General
-                option(value="ENT") ENT Specialist
+                each category, i in categories
+                    option(value="#{category.name}") #{category.name}
         div.form-control
             label Accepting new Patients:
             select(name="new_patients")

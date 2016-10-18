@@ -8,10 +8,10 @@ block content
                 li
                     h3 #{doctor.fullname}
                     p Speciality: #{doctor.category}
-                    p Location: #{doctor.local_address} #{doctor.city} #{doctor.state} (#{doctor.pin})
+                    p Location: #{doctor.local_address},#{doctor.city}, #{doctor.state} (#{doctor.pin})
                     p
                         a(href="/doctors/details/#{doctor.doc_id}") &gt; Details
         else
-        | Sorry.. No Doctors Listed.
+            | Sorry.. No Doctors Listed.
             
         

@@ -37,7 +37,31 @@ router.get('/', function(req, res) {
 
 //Add Doctors
 router.get('/add', function(req, res) {
-  res.render('adddoctor');
+    var query = "SELECT * FROM findadoc.categories";
+    client.execute(query, [], function(err, results) {
+        if(err) {
+            res.status(404).send({msg: err});
+        } else {
+            res.render('adddoctor', {
+                categories:results.rows
+            });
+        }
+    });
+});
+
+router.post('/add', function(req, res) {
+  var doc_id = cassandra.types.uuid();
+  var query = "INSERT INTO findadoc.doctors(doc_id, fullname, category, new_patients, experience, clinic_name, local_address, city, state, pin) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+  client.execute(query, [doc_id, req.body.fullname, req.body.category, req.body.new_patients, req.body.experience, req.body.clinic_name, req.body.local_address, req.body.city, req.body.state, req.body.pin], {prepare: true},
+   function(err, results) {
+    if(err) {
+        res.status(404).send({msg: err});
+    } else {
+        req.flash('success', "Doctor Added");
+        res.location('/doctors');
+        res.redirect('/doctors');
+    }
+  });
 });
 
 //Details page
